@@ -1,18 +1,21 @@
 import React from "react";
 import Classroom from "../home/Classroom.jsx";
 
-const Classes = props => {
+
+const Classes = ({classes}) => {
+
+    let data = [];
+    classes.forEach(classItem => {
+        data.push(<Classroom ide={classItem.id} name={classItem.title} description={classItem.description} author={classItem.owner}></Classroom>)
+    })
+
     return (
-        <div className="ui container bg-white">
-            <div className="ui items">
-                <Classroom name="Biology"></Classroom>
-                <div className="ui vertical segment"></div>
-                <Classroom name="Biology"></Classroom>
-                <div className="ui vertical segment"></div>
-                <Classroom name="Biology"></Classroom>
-            </div>
-            
-        </div>
+        <>
+            <div className="ui items margined">
+                    {data}
+                </div>
+        </>
+        
     )
 };
 

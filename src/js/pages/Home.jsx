@@ -14,12 +14,13 @@ const Home = props => {
             if(data.message.length >= 4) {
                 setClasses(<MyClasses classes={[data.message[0], data.message[1], data.message[2], data.message[3]]}></MyClasses>)
             } else if (data.message.length == 0) {
-                setClasses(<h1 style={{textAlign: "center"}}>No classes available currently</h1>);
+                setClasses(<h1 style={{textAlign: "center", marginTop: "3em"}}>No classes available currently</h1>);
             } else {
                 setClasses(<MyClasses classes={data.message}></MyClasses>);
             }
         } else {
             alert(data.message);
+            setClasses(<h1 style={{textAlign: "center", marginTop: "3em"}}>No classes available currently</h1>);
         }
         
     }, [])

@@ -41,8 +41,8 @@ app.get("/logout", (req, res) => {
     res.redirect("/login")
 })
 
-/*
-app.get(["/home", "/classes"], (req, res, next) => {
+
+app.get(["/home", "/classes", "/createClass", "/viewClass", "/createMeeting", "/viewClass/*"], (req, res, next) => {
     if (typeof req.session.loggedIn !== "undefined") {
         const data = verify(req.session.loggedIn);
 
@@ -53,7 +53,7 @@ app.get(["/home", "/classes"], (req, res, next) => {
         res.status(403).redirect("/login");
     }
     next();
-})*/
+})
 
 app.get(["/login", "/signup"], (req, res, next) => {
     if (typeof req.session.loggedIn !== "undefined") {

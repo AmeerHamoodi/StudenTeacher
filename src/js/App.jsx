@@ -27,8 +27,8 @@ const App = () => {
                 <Route path="/classes">
                     <Classes></Classes>
                 </Route>
-                <Route path="/viewClass">
-                    <ViewClass></ViewClass>
+                <Route path="/viewClass=:classId" render={props => <ViewClass {... props}></ViewClass>}>
+                    
                 </Route>
                 <Route path="/createMeeting">
                     <CreateMeeting></CreateMeeting>

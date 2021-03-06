@@ -34353,8 +34353,9 @@ const App = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Signup_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/classes"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Classes_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/viewClass"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_ViewClass_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/viewClass=:classId",
+    render: props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_ViewClass_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], props)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/createMeeting"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/createClass"
@@ -34371,12 +34372,14 @@ const App = () => {
 /*!*********************************!*\
   !*** ./src/js/api/classroom.js ***!
   \*********************************/
-/*! exports provided: getClassrooms */
+/*! exports provided: getClassrooms, createClassroom, getClassById */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClassrooms", function() { return getClassrooms; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createClassroom", function() { return createClassroom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClassById", function() { return getClassById; });
 const getClassrooms = () => {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
@@ -34391,6 +34394,36 @@ const getClassrooms = () => {
         xhr.send();
     })
 };
+
+const createClassroom = (data) => {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/class/create_class")
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.response));
+            console.log(JSON.parse(xhr.response))
+        }
+
+        xhr.send(JSON.stringify(data));
+    })
+};
+
+const getClassById = (data) => {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/class/get_class_by_id")
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.response));
+            console.log(JSON.parse(xhr.response))
+        }
+
+        xhr.send(JSON.stringify(data));
+    })
+}
 
 
 
@@ -34415,7 +34448,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
     login: _login__WEBPACK_IMPORTED_MODULE_0__["default"],
     signup: _signup__WEBPACK_IMPORTED_MODULE_1__["default"],
-    getClassrooms: _classroom__WEBPACK_IMPORTED_MODULE_2__["getClassrooms"]
+    getClassrooms: _classroom__WEBPACK_IMPORTED_MODULE_2__["getClassrooms"],
+    createClassroom: _classroom__WEBPACK_IMPORTED_MODULE_2__["createClassroom"],
+    getClassById: _classroom__WEBPACK_IMPORTED_MODULE_2__["getClassById"]
 });
 
 /***/ }),
@@ -34609,22 +34644,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Classes = props => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui container bg-white"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui items"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Biology"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui vertical segment"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Biology"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui vertical segment"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Biology"
-  })));
+const Classes = ({
+  classes
+}) => {
+  let data = [];
+  classes.forEach(classItem => {
+    data.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      ide: classItem.id,
+      name: classItem.title,
+      description: classItem.description,
+      author: classItem.owner
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui items margined"
+  }, data));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Classes);
@@ -34642,9 +34676,26 @@ const Classes = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api */ "./src/js/api/index.js");
+
 
 
 const Form = props => {
+  const clickback = async () => {
+    const data = {
+      title: $("#form_title").val(),
+      description: $("description").val()
+    };
+    const response = await _api__WEBPACK_IMPORTED_MODULE_1__["default"].createClassroom(data);
+
+    if (!response.error) {
+      alert(response.message);
+      location.href = "/home";
+    } else {
+      alert("ERROR :" + response.message);
+    }
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "ui form margined"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -34660,7 +34711,8 @@ const Form = props => {
     id: "form_desc"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "ui positive button",
-    type: "button"
+    type: "button",
+    onClick: clickback
   }, "Submit"));
 };
 
@@ -34727,7 +34779,7 @@ const Classroom = ({
   description
 }) => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "item"
+    className: "item bg-white"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "image"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -34739,7 +34791,7 @@ const Classroom = ({
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "header",
-    to: "/viewClass"
+    to: `/viewClass=${ide}`
   }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "meta"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " Description: ", description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -34823,23 +34875,15 @@ const MyClasses = ({
   let data = [];
   classes.forEach(classItem => {
     data.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      ide: classItem.ide,
+      ide: classItem.id,
       name: classItem.title,
       description: classItem.description,
       author: classItem.owner
     }));
-    classes.length > 2 && data.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "ui vertical segment"
-    }));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui container bg-white",
-    style: {
-      marginTop: 0
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui items"
-  }, data)));
+    className: "ui items margined"
+  }, data));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyClasses);
@@ -34912,7 +34956,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const MeetingOuter = ({
   id,
-  name
+  title,
+  description,
+  owner
 }) => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "item"
@@ -34927,11 +34973,11 @@ const MeetingOuter = ({
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "header"
-  }, "Header"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "meta"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Description")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Description: ", description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "extra"
-  }, "Additional Details")));
+  }, "Presentor: ", owner)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MeetingOuter);
@@ -34953,23 +34999,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Meetings = props => {
+const Meetings = ({
+  classData
+}) => {
+  let temp = [];
+
+  if (Array.isArray(classData)) {
+    classData.forEach(item => {
+      temp.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MeetingOuter_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        title: item.title,
+        description: item.description,
+        owner: item.owner
+      }));
+    });
+  }
+
+  temp = temp.length > 0 ? temp : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    style: {
+      textAlign: "center"
+    }
+  }, "No presentations, check back later, or start your own!");
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ui container bg-white items",
     style: {
       marginTop: 0
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MeetingOuter_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Ameer's explaination of Beta-galactosidase!"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui vertical segment"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MeetingOuter_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Why penguins are superior"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui vertical segment"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MeetingOuter_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Tim's presentation on the socio-economic status of penguins"
-  }));
+  }, temp);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Meetings);
@@ -35010,11 +35065,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
 /* harmony import */ var _components_classroom_Classes_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/classroom/Classes.jsx */ "./src/js/components/classroom/Classes.jsx");
+/* harmony import */ var _api___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/ */ "./src/js/api/index.js");
+
 
 
 
 
 const ClassPage = props => {
+  const [classes, setClasses] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(async () => {
+    const data = await _api___WEBPACK_IMPORTED_MODULE_3__["default"].getClassrooms();
+    console.log(data);
+
+    if (!data.error) {
+      if (data.message.length >= 4) {
+        setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_classroom_Classes_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          classes: data.message
+        }));
+      } else if (data.message.length == 0) {
+        setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          style: {
+            textAlign: "center",
+            marginTop: "3em"
+          }
+        }, "No classes available currently"));
+      }
+    } else {
+      alert(data.message);
+      setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        style: {
+          textAlign: "center",
+          marginTop: "3em"
+        }
+      }, "No classes available currently"));
+    }
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     active: "classes"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -35022,7 +35107,7 @@ const ClassPage = props => {
       textAlign: "center",
       marginBottom: 0
     }
-  }, "My classes:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_classroom_Classes_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, "My classes:"), classes);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ClassPage);
@@ -35113,7 +35198,8 @@ const Home = props => {
       } else if (data.message.length == 0) {
         setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           style: {
-            textAlign: "center"
+            textAlign: "center",
+            marginTop: "3em"
           }
         }, "No classes available currently"));
       } else {
@@ -35123,6 +35209,12 @@ const Home = props => {
       }
     } else {
       alert(data.message);
+      setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        style: {
+          textAlign: "center",
+          marginTop: "3em"
+        }
+      }, "No classes available currently"));
     }
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -35322,17 +35414,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_viewClass_Meetings_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/viewClass/Meetings.jsx */ "./src/js/components/viewClass/Meetings.jsx");
 /* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
 /* harmony import */ var _components_viewClass_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/viewClass/CreateMeeting.jsx */ "./src/js/components/viewClass/CreateMeeting.jsx");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/index */ "./src/js/api/index.js");
+
 
 
 
 
 
 const ViewClass = props => {
+  const [classData, setClassData] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [reactState, setReactState] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const id = props.match.params.classId;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(async () => {
+    const response = await _api_index__WEBPACK_IMPORTED_MODULE_4__["default"].getClassById({
+      id: id
+    });
+
+    if (!response.error && typeof response.message !== "undefined") {
+      setClassData(response.message);
+      console.log(JSON.parse(response.message.learning_sess));
+      setReactState([/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_Meetings_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        classData: JSON.parse(response.message.learning_sess)
+      })]);
+    } else {
+      alert(response.message);
+    }
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     style: {
       textAlign: "center"
     }
-  }, "Current Meetings:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_Meetings_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, classData.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    style: {
+      textAlign: "center"
+    }
+  }, "Owner: ", classData.owner), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    style: {
+      textAlign: "center"
+    }
+  }, "Current Meetings:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), reactState);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ViewClass);

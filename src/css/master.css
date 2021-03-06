@@ -15,7 +15,7 @@ body {
 }
 
 .bg-white {
-    background-color: white;
+    background-color: white !important;
 }
 
 .ui.container.bg-white {
@@ -33,6 +33,6 @@ a:hover {
 }
 
 .margined {
-    margin-right: 4em;
-    margin-left: 4em;
+    margin-right: 4em !important;
+    margin-left: 4em !important;
 }

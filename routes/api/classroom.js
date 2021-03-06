@@ -28,8 +28,9 @@ router.post("/class/create_class", async(req, res) => {
                 const { value, error } = await Schema.validate(data);
                 if (!error) {
                     let full = {...data };
-                    full.owner = await User.findOne({ where: { id: 1 } });
+                    full.owner = verified.id
                     full.learning_sess = "[]";
+                    full.users = `[${verified.id}]`
                     await Classroom.create(full);
                     res.status(200).send({ message: "Success!", error: false });
                 } else {
@@ -45,7 +46,8 @@ router.post("/class/create_class", async(req, res) => {
 
 router.post("/class/get_self_classes", async(req, res) => {
     try {
-        if (!req.session.loggedIn) {
+        if (typeof req.session.loggedIn == "undefined") {
+            console.log("log")
             res.status(403).send({ message: "Not authorized", error: true });
         } else {
             const verified = await verifySession(req.session.loggedIn);
@@ -54,10 +56,10 @@ router.post("/class/get_self_classes", async(req, res) => {
             } else {
                 const queryRes = await Classroom.findAll();
                 let mapped = queryRes.map(item => JSON.parse(item.dataValues.users));
-
+                console.log(mapped)
                 let indecies = [];
                 mapped.forEach((item, i) => {
-                    item == 1 && indecies.push(i);
+                    item.includes(verified.id) && indecies.push(i);
                 });
 
                 let response = [];
@@ -74,12 +76,65 @@ router.post("/class/get_self_classes", async(req, res) => {
                     });
                 }
                 console.log(response);
+                response = response.reverse();
                 res.status(200).send({ message: response, error: false })
             }
         }
     } catch (e) {
         console.log(e);
         res.status(500).send({ message: "ERROR", error: true });
+    }
+});
+
+router.post("/class/get_class_by_id", async(req, res) => {
+    try {
+        if (typeof req.session.loggedIn == "undefined") {
+            console.log("log")
+            res.status(403).send({ message: "Not authorized", error: true });
+        } else {
+            const verified = await verifySession(req.session.loggedIn);
+            if (!verified) {
+                res.status(403).send({ message: "Not authorized", error: true });
+            } else {
+                const data = req.body;
+                const queryRes = await Classroom.findOne({ where: { id: data.id } });
+                const owner = await User.findOne({ where: { id: queryRes.owner } });
+                let final = queryRes;
+                final.owner = owner.username;
+                res.status(200).send({ message: final, error: false })
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({ message: "ERROR", error: true });
+    }
+});
+
+router.get("/class/join_class", async(req, res) => {
+    try {
+        if (typeof req.session.loggedIn == "undefined") {
+            console.log("log")
+            res.status(403).redirect("/login");
+        } else {
+            const verified = await verifySession(req.session.loggedIn);
+            if (!verified) {
+                res.status(403).redirect("/login");
+            } else {
+                const classId = req.query.id;
+                if (typeof classId !== "undefined") {
+                    const classInfo = await Classroom.findOne({ where: { id: classId } });
+                    const users = JSON.parse(classInfo.users);
+                    users.push(verified.id);
+                    classInfo.users = JSON.stringify(users);
+                    await classInfo.save();
+
+                    res.status(200).redirect("/home");
+                }
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(403).redirect("/login");
     }
 })
 

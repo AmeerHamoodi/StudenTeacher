@@ -5,7 +5,7 @@ const verify = async token => {
     try {
         const data = await jwt.verify(token, process.env.TOKEN);
         const userData = await User.findOne({ where: { id: data.id } });
-        return { username: userData.username };
+        return { username: userData.username, id: data.id };
     } catch (e) {
         return false;
     }
