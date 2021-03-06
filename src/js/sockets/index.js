@@ -27,7 +27,7 @@ const init = () => {
 
         me.on("call", call => {
             if (typeof callList[call.peer] == "undefined") {
-                console.log(call);
+                console.log(streams);
                 call.answer(stream)
                 call.on("stream", newStream => {
                     console.log(newStream);
@@ -86,10 +86,11 @@ const init = () => {
             const call = me.call(userId, stream);
 
             call.on("stream", videoStream => {
-                if (typeof streams[stream.id] == "undefined") {
+                console.log(videoStream)
+                if (typeof streams[videoStream.id] == "undefined") {
                     console.log("stream");
                     client.addVidToVids(videoStream, userId);
-                    streams[stream.id] = stream;
+                    streams[videoStream.id] = stream;
                 }
 
             })
