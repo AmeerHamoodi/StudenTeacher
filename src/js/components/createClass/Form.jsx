@@ -5,7 +5,7 @@ const Form = props => {
     const clickback = async () => {
         const data = {
             title: $("#form_title").val(),
-            description: $("description").val()
+            description: $("#form_desc").val()
         };
         const response = await API.createClassroom(data);
         if(!response.error) {

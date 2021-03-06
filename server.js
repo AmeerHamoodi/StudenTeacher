@@ -13,6 +13,9 @@ const sequelize = new Sequelize("profly", "root", "", {
 module.exports = sequelize;
 
 app.use(express.json());
+app.get("/", (req, res) => {
+    res.redirect("/home")
+})
 app.use(express.static(__dirname + "/public"));
 app.use(session({
     secret: process.env.SESSION,

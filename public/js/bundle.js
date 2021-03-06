@@ -34647,6 +34647,7 @@ __webpack_require__.r(__webpack_exports__);
 const Classes = ({
   classes
 }) => {
+  console.log(classes);
   let data = [];
   classes.forEach(classItem => {
     data.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -34684,7 +34685,7 @@ const Form = props => {
   const clickback = async () => {
     const data = {
       title: $("#form_title").val(),
-      description: $("description").val()
+      description: $("#form_desc").val()
     };
     const response = await _api__WEBPACK_IMPORTED_MODULE_1__["default"].createClassroom(data);
 
@@ -34906,6 +34907,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const CreateMeeting = props => {
+  const clickback = () => {
+    const link = location.protocol + "//" + location.hostname + ":" + location.port + "/api/class/join_class?id=" + window.location.href.split("viewClass=")[1];
+    navigator.clipboard.writeText(link);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ui grid",
     style: {
@@ -34934,7 +34940,15 @@ const CreateMeeting = props => {
     },
     className: "greenLink",
     to: "/createMeeting"
-  }, "Click here to create a meeting ", "->")));
+  }, "Click here to create a meeting ", "->"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      color: "#34eb52",
+      fontWeight: "bold",
+      fontSize: "1.2em"
+    },
+    className: "greenLink",
+    onClick: clickback
+  }, "Click here to copy an invite link to join your class +")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CreateMeeting);
@@ -35078,11 +35092,11 @@ const ClassPage = props => {
     console.log(data);
 
     if (!data.error) {
-      if (data.message.length >= 4) {
+      if (data.message.length > 0) {
         setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_classroom_Classes_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
           classes: data.message
         }));
-      } else if (data.message.length == 0) {
+      } else {
         setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           style: {
             textAlign: "center",

@@ -11,9 +11,9 @@ const ClassPage = props => {
         const data = await API.getClassrooms();
         console.log(data);
         if(!data.error) {
-            if(data.message.length >= 4) {
+            if(data.message.length > 0) {
                 setClasses(<Classes classes={data.message}></Classes>)
-            } else if (data.message.length == 0) {
+            } else {
                 setClasses(<h1 style={{textAlign: "center", marginTop: "3em"}}>No classes available currently</h1>);
             }
         } else {

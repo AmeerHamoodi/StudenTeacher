@@ -7,7 +7,6 @@ const Joi = require("joi");
 
 const Schema = Joi.object({
     title: Joi.string()
-        .alphanum()
         .max(100)
         .required(),
     description: Joi.string()
@@ -30,7 +29,8 @@ router.post("/class/create_class", async(req, res) => {
                     let full = {...data };
                     full.owner = verified.id
                     full.learning_sess = "[]";
-                    full.users = `[${verified.id}]`
+                    full.users = `[${verified.id}]`;
+                    full.description = typeof value.description !== "undefined" ? value.description : null;
                     await Classroom.create(full);
                     res.status(200).send({ message: "Success!", error: false });
                 } else {
@@ -127,7 +127,6 @@ router.get("/class/join_class", async(req, res) => {
                     users.push(verified.id);
                     classInfo.users = JSON.stringify(users);
                     await classInfo.save();
-
                     res.status(200).redirect("/home");
                 }
             }
