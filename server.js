@@ -3,8 +3,10 @@ const express = require("express");
 const session = require("express-session");
 const { Sequelize } = require("sequelize");
 const { v4: uuidv4 } = require('uuid');
+const cors = require("cors");
 
 const app = express();
+const server = require("http").createServer(app);
 
 const sequelize = new Sequelize("profly", "root", "", {
     host: "localhost",
@@ -12,6 +14,7 @@ const sequelize = new Sequelize("profly", "root", "", {
 });
 module.exports = sequelize;
 
+//app.use(cors);
 app.use(express.json());
 app.get("/", (req, res) => {
     res.redirect("/home")
@@ -69,10 +72,40 @@ app.get(["/login", "/signup"], (req, res, next) => {
     next();
 })
 
+server.listen(2000);
+console.log("server started")
+
+//SOCKET TIME 
+
+const io = require("socket.io")(server);
+const { ExpressPeerServer } = require("peer");
+const peerServer = ExpressPeerServer(server, {
+    debug: true
+})
+
+app.use("/stream_backend", peerServer);
 app.get("*", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-app.listen(2000, () => {
-    console.log("server started");
+const User = require("./sockets/User");
+const users = {};
+
+io.on("connection", socket => {
+    console.log("Connection");
+    socket.id = uuidv4();
+
+    users[socket.id] = new User(socket);
+    socket.broadcast.emit("new_user", socket.id);
+
+    socket.on("disconnect", () => {
+        console.log("Disconnect", users[socket.id].peer_id)
+        socket.broadcast.emit("disconnect_peer", users[socket.id].peer_id)
+        delete users[socket.id];
+    });
+
+    socket.on("peer_open", (id) => {
+        users[socket.id].peer_id = id;
+        socket.broadcast.emit("room_connection", id);
+    })
 });

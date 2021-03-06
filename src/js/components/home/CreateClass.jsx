@@ -7,7 +7,7 @@ const CreateClass = props => {
                 <div className="five wide column" style={{paddingBottom: 0}}></div>
                 <div className="five wide column" style={{paddingBottom: 0}}></div>
                 <div className="five wide column" style={{paddingBottom: 0}}>
-                    <Link style={{color: "#34eb52", fontWeight: "bold", fontSize: "1.2em"}} className="greenLink" to="/createClass">Click here to create a class {"->"}</Link>
+                    <Link style={{color: "#31d64c", fontWeight: "bold", fontSize: "1.2em"}} className="greenLink" to="/createClass">Click here to create a class {"->"}</Link>
                 </div>
         </div>
     )

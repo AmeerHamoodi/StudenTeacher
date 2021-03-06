@@ -19,7 +19,21 @@ const Login = props => {
             if(res.error) {
                 alert(res.message);
             } else {
-                location.href = "/home"
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/api/auth/ping");
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                
+                xhr.onload = () => {
+                    const res = xhr.response;
+                    console.log(JSON.parse(res).message);
+
+                    if(!res.error) {
+                        localStorage.setItem("userData", JSON.stringify(JSON.parse(res).message));
+                        location.href = "/home"
+                    }
+                }
+    
+                xhr.send();
             }
         } catch(e) {
             console.log(e);

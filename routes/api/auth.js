@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const verifySession = require("../../auth/verifySession");
 
 const Schema = require("../../auth/valid");
 const User = require("../../models/User");
@@ -58,5 +59,25 @@ router.post("/auth/signup", async(req, res) => {
         }
     }
 });
+
+router.post("/auth/ping", async(req, res) => {
+    try {
+        if (typeof req.session.loggedIn == "undefined") {
+            console.log("log")
+            res.status(403).send({ message: "Not authorized", error: true });
+        } else {
+            const verified = await verifySession(req.session.loggedIn);
+            if (!verified) {
+                res.status(403).send({ message: "Not authorized", error: true });
+            } else {
+                const userData = await User.findOne({ where: { id: verified.id } });
+                res.status(200).send({ message: { id: verified.id, username: userData.username }, error: false })
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({ message: "ERROR", error: true });
+    }
+})
 
 module.exports = router;

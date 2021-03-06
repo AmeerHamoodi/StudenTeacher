@@ -10,6 +10,7 @@ import ViewClass from "./pages/ViewClass.jsx";
 import CreateMeeting from "./pages/CreateMeeting.jsx";
 import CreateClass from "./pages/CreateClass.jsx";
 import Logout from "./pages/Logout.jsx";
+import Stream from "./pages/Stream.jsx";
 
 const App = () => {
     return (
@@ -38,6 +39,9 @@ const App = () => {
                 </Route>
                 <Route path="/logout">
                     <Logout></Logout>
+                </Route>
+                <Route path="/stream">
+                    <Stream></Stream>
                 </Route>
             </Switch>
         </BrowserRouter>

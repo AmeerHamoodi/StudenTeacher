@@ -135,6 +135,39 @@ router.get("/class/join_class", async(req, res) => {
         console.log(e);
         res.status(403).redirect("/login");
     }
-})
+});
+
+router.post("/class/remove_class", async(req, res) => {
+    try {
+        if (typeof req.session.loggedIn == "undefined") {
+            console.log("log")
+            res.status(403).send({ message: "Not authorized", error: true });
+        } else {
+            const verified = await verifySession(req.session.loggedIn);
+            if (!verified) {
+                res.status(403).send({ message: "Not authorized", error: true });
+            } else {
+                const data = req.body;
+                const queryRes = await Classroom.findOne({ where: { id: data.id } });
+
+                if (queryRes.owner != verified.id) {
+                    const usersArr = JSON.parse(queryRes.users);
+                    usersArr.splice(usersArr.indexOf(verified.id), 1);
+                    queryRes.users = JSON.stringify(usersArr);
+                    await queryRes.save();
+
+                    res.status(200).send({ message: "Success!", error: false })
+                } else {
+                    await queryRes.destroy();
+
+                    res.status(200).send({ message: "Success!", error: false })
+                }
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({ message: "ERROR", error: true });
+    }
+});
 
 module.exports = router;

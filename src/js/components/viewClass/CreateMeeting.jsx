@@ -11,8 +11,8 @@ const CreateMeeting = props => {
                 <div className="five wide column" style={{paddingBottom: 0}}></div>
                 <div className="five wide column" style={{paddingBottom: 0}}></div>
                 <div className="five wide column" style={{paddingBottom: 0}}>
-                    <Link style={{color: "#34eb52", fontWeight: "bold", fontSize: "1.2em"}} className="greenLink" to="/createMeeting">Click here to create a meeting {"->"}</Link>
-                    <div style={{color: "#34eb52", fontWeight: "bold", fontSize: "1.2em"}} className="greenLink" onClick={clickback}>Click here to copy an invite link to join your class +</div>
+                    <Link style={{color: "#31d64c", fontWeight: "bold", fontSize: "1.2em"}} className="greenLink" to="/createMeeting">Click here to create a meeting {"->"}</Link>
+                    <div style={{color: "#31d64c", fontWeight: "bold", fontSize: "1.2em"}} className="greenLink" onClick={clickback}>Click here to copy an invite link to join your class +</div>
                 </div>
         </div>
     )

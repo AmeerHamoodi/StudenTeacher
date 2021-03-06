@@ -6,6 +6,9 @@ const NavBar = ({active}) => {
         home: active == "home" ? "active" : "",
         classes: active == "classes" ? "active" : ""
     }
+
+    const username = JSON.parse(localStorage.getItem("userData")).username;
+
     return (
         <div className="ui pointing menu">
             <Link className={`item ${actives.home}`} to="/home">
@@ -15,6 +18,7 @@ const NavBar = ({active}) => {
                 Classes
             </Link>
             <div className="right menu">
+                <div className="item">{username}</div>
                 <a className="ui item" href="/logout">
                 Logout
                 </a>

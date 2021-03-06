@@ -24,15 +24,28 @@ body {
 }
 
 a:hover {
-    color: #34eb52;
+    color: #31d64c;
 }
 
 .greenLink:hover {
     cursor: pointer;
-    color: #31d64c !important;
+    color: #34eb52 !important;
 }
 
 .margined {
     margin-right: 4em !important;
     margin-left: 4em !important;
+}
+
+.calls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+video.presentation_call {
+    height: 300px;
+    width: 400px;
+    object-fit: cover;
+    padding: 5px;
 }
