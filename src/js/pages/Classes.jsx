@@ -1,14 +1,17 @@
 import React from "react";
 
 import NavBar from "../components/NavBar.jsx";
+import Classes from "../components/classroom/Classes.jsx";
 
-const Classes = props => {
+const ClassPage = props => {
     return (
         <>
             <NavBar active="classes"></NavBar>
-            <h1>Hi</h1>
+            <h1 style={{textAlign: "center",  marginBottom: 0}}>My classes:</h1>
+            <Classes></Classes>
+            
         </>
     )
 };
 
-export default Classes;
+export default ClassPage;

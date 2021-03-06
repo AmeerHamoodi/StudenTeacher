@@ -8,14 +8,14 @@ const NavBar = ({active}) => {
     }
     return (
         <div className="ui pointing menu">
-            <Link className={`item ${actives.home}`} to="/">
+            <Link className={`item ${actives.home}`} to="/home">
                 Home
             </Link>
             <Link className={`item ${actives.classes}`} to="/classes">
                 Classes
             </Link>
             <div className="right menu">
-                <Link className="ui item">
+                <Link className="ui item" to="/logout">
                 Logout
                 </Link>
             </div>

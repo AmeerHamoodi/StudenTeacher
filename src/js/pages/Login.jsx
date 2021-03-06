@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import API from "../api";
 import Form from "../components/Form.jsx";
 import Error from "../components/Error.jsx";
+import {Link} from "react-router-dom";
 
 const Login = props => {
     const [errorDisplay, setErrorDisplay] = useState("");    
@@ -18,7 +19,7 @@ const Login = props => {
             if(res.error) {
                 alert(res.message);
             } else {
-                location.href = "/"
+                location.href = "/home"
             }
         } catch(e) {
             console.log(e);
@@ -34,9 +35,10 @@ const Login = props => {
     
     return (
         <>
-            <div className="ui container">
+            <div className="ui container bg-white" style={{borderRadius: "7px"}}>
                 <h1 style={{textAlign: "center"}}>Login:</h1>
                 <Form cb={callback}></Form>
+                <Link to="/signup" style={{padding: "10px 10px 10px 10px"}}>Or click here to signup!</Link>
                 <Error message={errorDisplay}></Error>
             </div>
         </> 

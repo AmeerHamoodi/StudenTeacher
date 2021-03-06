@@ -6,12 +6,13 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Home from "./pages/Home.jsx";
 import Classes from "./pages/Classes.jsx";
+import ViewClass from "./pages/ViewClass.jsx";
 
 const App = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact>
+                <Route path="/home" exact>
                     <Home></Home>
                 </Route>
                 <Route path="/login">
@@ -22,6 +23,9 @@ const App = () => {
                 </Route>
                 <Route path="/classes">
                     <Classes></Classes>
+                </Route>
+                <Route path="/viewClass">
+                    <ViewClass></ViewClass>
                 </Route>
             </Switch>
         </BrowserRouter>

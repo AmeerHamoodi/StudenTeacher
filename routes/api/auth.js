@@ -24,6 +24,7 @@ router.post("/auth/login", async(req, res) => {
         }
 
         const token = await jwt.sign({ id: user.id }, process.env.TOKEN);
+        req.session.loggedIn = token;
 
         res.status(200).send({ message: token, error: false });
     } catch (e) {
@@ -47,6 +48,8 @@ router.post("/auth/signup", async(req, res) => {
                 const newPsw = await bcrypt.hash(value.password, 10);
                 const userValue = await User.create({ username: value.username, password: newPsw });
                 const token = await jwt.sign({ id: userValue.id }, process.env.TOKEN);
+
+                req.session.loggedIn = token;
 
                 res.status(200).send({ message: token, error: false })
             } catch (e) {
