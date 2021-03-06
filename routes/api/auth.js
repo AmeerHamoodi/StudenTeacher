@@ -34,6 +34,7 @@ router.post("/auth/login", async(req, res) => {
 
 router.post("/auth/signup", async(req, res) => {
     const data = req.body;
+    console.log(data);
     if (data.username && data.password) {
         const { value, error } = await Schema.validate(data);
 

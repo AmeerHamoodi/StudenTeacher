@@ -34322,6 +34322,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _pages_Login_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Login.jsx */ "./src/js/pages/Login.jsx");
+/* harmony import */ var _pages_Signup_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Signup.jsx */ "./src/js/pages/Signup.jsx");
+/* harmony import */ var _pages_Home_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Home.jsx */ "./src/js/pages/Home.jsx");
+/* harmony import */ var _pages_Classes_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Classes.jsx */ "./src/js/pages/Classes.jsx");
+
+ //pages
+
+
+
 
 
 
@@ -34329,14 +34338,207 @@ const App = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     exact: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Home_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/login"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Login")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Login_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/signup"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Signup"))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Signup_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/classes"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Classes_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./src/js/api/index.js":
+/*!*****************************!*\
+  !*** ./src/js/api/index.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login */ "./src/js/api/login.js");
+/* harmony import */ var _signup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./signup */ "./src/js/api/signup.js");
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    login: _login__WEBPACK_IMPORTED_MODULE_0__["default"],
+    signup: _signup__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/js/api/login.js":
+/*!*****************************!*\
+  !*** ./src/js/api/login.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const login = (data) => {
+    return new Promise((resolve, reject) => {
+        console.log("XHR")
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/auth/login");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        console.log(JSON.stringify(data))
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = () => {
+            console.log("res");
+            resolve(JSON.parse(xhr.response));
+        }
+    })
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (login);
+
+/***/ }),
+
+/***/ "./src/js/api/signup.js":
+/*!******************************!*\
+  !*** ./src/js/api/signup.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const signup = (data) => {
+    return new Promise((resolve, reject) => {
+        console.log("XHR")
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/auth/signup");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        console.log(JSON.stringify(data))
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = () => {
+            console.log("res");
+            resolve(JSON.parse(xhr.response));
+        }
+    })
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (signup);
+
+/***/ }),
+
+/***/ "./src/js/components/Error.jsx":
+/*!*************************************!*\
+  !*** ./src/js/components/Error.jsx ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Error = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui negative message"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "close icon"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header"
+  }, "ERROR"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.message));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Error);
+
+/***/ }),
+
+/***/ "./src/js/components/Form.jsx":
+/*!************************************!*\
+  !*** ./src/js/components/Form.jsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Form = ({
+  cb
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "ui form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "username",
+    id: "form_username",
+    placeholder: "Enter username"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    name: "password",
+    id: "form_password",
+    placeholder: "Enter password"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "ui button",
+    type: "button",
+    id: "form_submit",
+    onClick: cb
+  }, "Submit"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Form);
+
+/***/ }),
+
+/***/ "./src/js/components/NavBar.jsx":
+/*!**************************************!*\
+  !*** ./src/js/components/NavBar.jsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+const NavBar = ({
+  active
+}) => {
+  const actives = {
+    home: active == "home" ? "active" : "",
+    classes: active == "classes" ? "active" : ""
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui pointing menu"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: `item ${actives.home}`,
+    to: "/"
+  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: `item ${actives.classes}`,
+    to: "/classes"
+  }, "Classes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "right menu"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "ui item"
+  }, "Logout")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NavBar);
 
 /***/ }),
 
@@ -34358,6 +34560,186 @@ __webpack_require__.r(__webpack_exports__);
 
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById("app"));
+
+/***/ }),
+
+/***/ "./src/js/pages/Classes.jsx":
+/*!**********************************!*\
+  !*** ./src/js/pages/Classes.jsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
+
+
+
+const Classes = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    active: "classes"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hi"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Classes);
+
+/***/ }),
+
+/***/ "./src/js/pages/Home.jsx":
+/*!*******************************!*\
+  !*** ./src/js/pages/Home.jsx ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
+
+
+
+const Home = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    active: "home"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Home);
+
+/***/ }),
+
+/***/ "./src/js/pages/Login.jsx":
+/*!********************************!*\
+  !*** ./src/js/pages/Login.jsx ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api */ "./src/js/api/index.js");
+/* harmony import */ var _components_Form_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Form.jsx */ "./src/js/components/Form.jsx");
+/* harmony import */ var _components_Error_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Error.jsx */ "./src/js/components/Error.jsx");
+
+
+
+
+
+const Login = props => {
+  const [errorDisplay, setErrorDisplay] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+
+  const callback = async () => {
+    console.log("click");
+    const data = {
+      username: $("#form_username").val(),
+      password: $("#form_password").val()
+    };
+
+    try {
+      const res = await _api__WEBPACK_IMPORTED_MODULE_1__["default"].login(data);
+
+      if (res.error) {
+        alert(res.message);
+      } else {
+        location.href = "/";
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    $(".close.icon").click(function () {
+      $(this).parent().hide();
+    });
+    $(".ui.negative.message").hide();
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    style: {
+      textAlign: "center"
+    }
+  }, "Login:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Form_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    cb: callback
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Error_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    message: errorDisplay
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
+/***/ "./src/js/pages/Signup.jsx":
+/*!*********************************!*\
+  !*** ./src/js/pages/Signup.jsx ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api */ "./src/js/api/index.js");
+/* harmony import */ var _components_Form_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Form.jsx */ "./src/js/components/Form.jsx");
+/* harmony import */ var _components_Error_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Error.jsx */ "./src/js/components/Error.jsx");
+
+
+
+
+
+const Signup = props => {
+  const [errorDisplay, setErrorDisplay] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+
+  const callback = async () => {
+    console.log("click");
+    const data = {
+      username: $("#form_username").val(),
+      password: $("#form_password").val()
+    };
+
+    try {
+      const res = await _api__WEBPACK_IMPORTED_MODULE_1__["default"].signup(data);
+
+      if (res.error) {
+        alert(res.message);
+      } else {
+        location.href = "/";
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    $(".close.icon").click(function () {
+      $(this).parent().hide();
+    });
+    $(".ui.negative.message").hide();
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    style: {
+      textAlign: "center"
+    }
+  }, "Signup:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Form_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    cb: callback
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Error_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    message: errorDisplay
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Signup);
 
 /***/ })
 

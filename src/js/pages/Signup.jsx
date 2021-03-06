@@ -3,7 +3,7 @@ import API from "../api";
 import Form from "../components/Form.jsx";
 import Error from "../components/Error.jsx";
 
-const Login = props => {
+const Signup = props => {
     const [errorDisplay, setErrorDisplay] = useState("");    
 
     const callback = async () => {
@@ -13,7 +13,7 @@ const Login = props => {
             password: $("#form_password").val()
         }
         try {
-            const res = await API.login(data);
+            const res = await API.signup(data);
 
             if(res.error) {
                 alert(res.message);
@@ -35,7 +35,7 @@ const Login = props => {
     return (
         <>
             <div className="ui container">
-                <h1 style={{textAlign: "center"}}>Login:</h1>
+                <h1 style={{textAlign: "center"}}>Signup:</h1>
                 <Form cb={callback}></Form>
                 <Error message={errorDisplay}></Error>
             </div>
@@ -43,4 +43,4 @@ const Login = props => {
     )
 };
 
-export default Login;
+export default Signup;

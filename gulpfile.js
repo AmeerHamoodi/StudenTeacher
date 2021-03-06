@@ -24,9 +24,9 @@ const html = () => {
 };
 
 const css = () => {
-    run[1] == 0 && gulp.watch("./src/css/**", html);
+    run[2] == 0 && gulp.watch("./src/css/**", css);
 
-    run[1] = 1;
+    run[2] = 1;
 
     return gulp.src("./src/css/**")
         .pipe(gulp.dest("./public/css"))

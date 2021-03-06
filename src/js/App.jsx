@@ -1,18 +1,27 @@
 import React from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
+//pages
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import Home from "./pages/Home.jsx";
+import Classes from "./pages/Classes.jsx";
+
 const App = () => {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact>
-                    <div>Home</div>
+                    <Home></Home>
                 </Route>
                 <Route path="/login">
-                    <div>Login</div>
+                    <Login></Login>
                 </Route>
                 <Route path="/signup">
-                    <div>Signup</div>
+                    <Signup></Signup>
+                </Route>
+                <Route path="/classes">
+                    <Classes></Classes>
                 </Route>
             </Switch>
         </BrowserRouter>

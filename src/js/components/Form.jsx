@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = props => {
+const Form = ({cb}) => {
     return (
         <form className="ui form">
             <div className="field">
@@ -11,7 +11,7 @@ const Form = props => {
                 <label>Password</label>
                 <input type="password" name="password" id="form_password" placeholder="Enter password" />
             </div>
-            <button className="ui button" type="button" id="form_submit">Submit</button>
+            <button className="ui button" type="button" id="form_submit" onClick={cb}>Submit</button>
         </form>
     )
 };

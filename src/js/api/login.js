@@ -1,8 +1,8 @@
-const signup = (data) => {
+const login = (data) => {
     return new Promise((resolve, reject) => {
         console.log("XHR")
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "/api/auth/signup");
+        xhr.open("POST", "/api/auth/login");
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         console.log(JSON.stringify(data))
         xhr.send(JSON.stringify(data));
@@ -14,4 +14,4 @@ const signup = (data) => {
     })
 };
 
-export default signup;
+export default login;

@@ -1,0 +1,15 @@
+body {
+    background-color: #ededed !important;
+}
+
+.ui.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ui.menu {
+    border-radius: 0 !important;
+    border-top: #34eb52 3px solid !important;
+}
