@@ -15,9 +15,9 @@ const NavBar = ({active}) => {
                 Classes
             </Link>
             <div className="right menu">
-                <Link className="ui item" to="/logout">
+                <a className="ui item" href="/logout">
                 Logout
-                </Link>
+                </a>
             </div>
         </div>
     )

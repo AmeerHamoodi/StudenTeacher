@@ -34327,8 +34327,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Home_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Home.jsx */ "./src/js/pages/Home.jsx");
 /* harmony import */ var _pages_Classes_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Classes.jsx */ "./src/js/pages/Classes.jsx");
 /* harmony import */ var _pages_ViewClass_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/ViewClass.jsx */ "./src/js/pages/ViewClass.jsx");
+/* harmony import */ var _pages_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/CreateMeeting.jsx */ "./src/js/pages/CreateMeeting.jsx");
+/* harmony import */ var _pages_CreateClass_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/CreateClass.jsx */ "./src/js/pages/CreateClass.jsx");
+/* harmony import */ var _pages_Logout_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/Logout.jsx */ "./src/js/pages/Logout.jsx");
 
  //pages
+
+
+
 
 
 
@@ -34348,10 +34354,45 @@ const App = () => {
     path: "/classes"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Classes_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/viewClass"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_ViewClass_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_ViewClass_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/createMeeting"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/createClass"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_CreateClass_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/logout"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Logout_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./src/js/api/classroom.js":
+/*!*********************************!*\
+  !*** ./src/js/api/classroom.js ***!
+  \*********************************/
+/*! exports provided: getClassrooms */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClassrooms", function() { return getClassrooms; });
+const getClassrooms = () => {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/class/get_self_classes")
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.response));
+            console.log(JSON.parse(xhr.response))
+        }
+
+        xhr.send();
+    })
+};
+
+
 
 /***/ }),
 
@@ -34366,12 +34407,15 @@ const App = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login */ "./src/js/api/login.js");
 /* harmony import */ var _signup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./signup */ "./src/js/api/signup.js");
+/* harmony import */ var _classroom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./classroom */ "./src/js/api/classroom.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     login: _login__WEBPACK_IMPORTED_MODULE_0__["default"],
-    signup: _signup__WEBPACK_IMPORTED_MODULE_1__["default"]
+    signup: _signup__WEBPACK_IMPORTED_MODULE_1__["default"],
+    getClassrooms: _classroom__WEBPACK_IMPORTED_MODULE_2__["getClassrooms"]
 });
 
 /***/ }),
@@ -34540,9 +34584,9 @@ const NavBar = ({
     to: "/classes"
   }, "Classes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right menu"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "ui item",
-    to: "/logout"
+    href: "/logout"
   }, "Logout")));
 };
 
@@ -34587,6 +34631,80 @@ const Classes = props => {
 
 /***/ }),
 
+/***/ "./src/js/components/createClass/Form.jsx":
+/*!************************************************!*\
+  !*** ./src/js/components/createClass/Form.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Form = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "ui form margined"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "form_title",
+    placeholder: "Enter title"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    rows: "2",
+    id: "form_desc"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "ui positive button",
+    type: "button"
+  }, "Submit"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Form);
+
+/***/ }),
+
+/***/ "./src/js/components/createMeeting/Form.jsx":
+/*!**************************************************!*\
+  !*** ./src/js/components/createMeeting/Form.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Form = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "ui form margined"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "form_title",
+    placeholder: "Enter title"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    rows: "2",
+    id: "form_desc"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "ui positive button",
+    type: "button"
+  }, "Submit"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Form);
+
+/***/ }),
+
 /***/ "./src/js/components/home/Classroom.jsx":
 /*!**********************************************!*\
   !*** ./src/js/components/home/Classroom.jsx ***!
@@ -34603,8 +34721,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Classroom = ({
-  id,
-  name
+  ide,
+  name,
+  author,
+  description
 }) => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "item"
@@ -34620,14 +34740,65 @@ const Classroom = ({
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "header",
     to: "/viewClass"
-  }, "Header"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "meta"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Description")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " Description: ", description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "extra"
-  }, "Additional Details"))));
+  }, "Owner: ", author))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Classroom);
+
+/***/ }),
+
+/***/ "./src/js/components/home/CreateClass.jsx":
+/*!************************************************!*\
+  !*** ./src/js/components/home/CreateClass.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+const CreateClass = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui grid",
+    style: {
+      paddingBottom: 0
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "five wide column",
+    style: {
+      paddingBottom: 0
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "five wide column",
+    style: {
+      paddingBottom: 0
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "five wide column",
+    style: {
+      paddingBottom: 0
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    style: {
+      color: "#34eb52",
+      fontWeight: "bold",
+      fontSize: "1.2em"
+    },
+    className: "greenLink",
+    to: "/createClass"
+  }, "Click here to create a class ", "->")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateClass);
 
 /***/ }),
 
@@ -34646,25 +34817,83 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const MyClasses = props => {
+const MyClasses = ({
+  classes
+}) => {
+  let data = [];
+  classes.forEach(classItem => {
+    data.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      ide: classItem.ide,
+      name: classItem.title,
+      description: classItem.description,
+      author: classItem.owner
+    }));
+    classes.length > 2 && data.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "ui vertical segment"
+    }));
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui container bg-white"
+    className: "ui container bg-white",
+    style: {
+      marginTop: 0
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ui items"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Biology"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui vertical segment"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Biology"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui vertical segment"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Classroom_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    name: "Biology"
-  }))));
+  }, data)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MyClasses);
+
+/***/ }),
+
+/***/ "./src/js/components/viewClass/CreateMeeting.jsx":
+/*!*******************************************************!*\
+  !*** ./src/js/components/viewClass/CreateMeeting.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+const CreateMeeting = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui grid",
+    style: {
+      paddingBottom: 0
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "five wide column",
+    style: {
+      paddingBottom: 0
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "five wide column",
+    style: {
+      paddingBottom: 0
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "five wide column",
+    style: {
+      paddingBottom: 0
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    style: {
+      color: "#34eb52",
+      fontWeight: "bold",
+      fontSize: "1.2em"
+    },
+    className: "greenLink",
+    to: "/createMeeting"
+  }, "Click here to create a meeting ", "->")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateMeeting);
 
 /***/ }),
 
@@ -34726,7 +34955,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const Meetings = props => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui container bg-white items"
+    className: "ui container bg-white items",
+    style: {
+      marginTop: 0
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MeetingOuter_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     name: "Ameer's explaination of Beta-galactosidase!"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -34797,6 +35029,56 @@ const ClassPage = props => {
 
 /***/ }),
 
+/***/ "./src/js/pages/CreateClass.jsx":
+/*!**************************************!*\
+  !*** ./src/js/pages/CreateClass.jsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_createClass_Form_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/createClass/Form.jsx */ "./src/js/components/createClass/Form.jsx");
+/* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
+
+
+
+
+const CreateClass = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Enter class information below:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_createClass_Form_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateClass);
+
+/***/ }),
+
+/***/ "./src/js/pages/CreateMeeting.jsx":
+/*!****************************************!*\
+  !*** ./src/js/pages/CreateMeeting.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_createMeeting_Form_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/createMeeting/Form.jsx */ "./src/js/components/createMeeting/Form.jsx");
+/* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
+
+
+
+
+const CreateMeeting = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Enter presentation information below:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_createMeeting_Form_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateMeeting);
+
+/***/ }),
+
 /***/ "./src/js/pages/Home.jsx":
 /*!*******************************!*\
   !*** ./src/js/pages/Home.jsx ***!
@@ -34810,11 +35092,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
 /* harmony import */ var _components_home_MyClasses_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/home/MyClasses.jsx */ "./src/js/components/home/MyClasses.jsx");
+/* harmony import */ var _components_home_CreateClass_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/home/CreateClass.jsx */ "./src/js/components/home/CreateClass.jsx");
+/* harmony import */ var _api___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/ */ "./src/js/api/index.js");
+
+
 
 
 
 
 const Home = props => {
+  const [classes, setClasses] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(async () => {
+    const data = await _api___WEBPACK_IMPORTED_MODULE_4__["default"].getClassrooms();
+
+    if (!data.error) {
+      if (data.message.length >= 4) {
+        setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_home_MyClasses_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          classes: [data.message[0], data.message[1], data.message[2], data.message[3]]
+        }));
+      } else if (data.message.length == 0) {
+        setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          style: {
+            textAlign: "center"
+          }
+        }, "No classes available currently"));
+      } else {
+        setClasses( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_home_MyClasses_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          classes: data.message
+        }));
+      }
+    } else {
+      alert(data.message);
+    }
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     active: "home"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -34822,7 +35132,7 @@ const Home = props => {
       textAlign: "center",
       marginBottom: 0
     }
-  }, "My classes:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_home_MyClasses_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, "My classes:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_home_CreateClass_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), classes);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -34901,6 +35211,28 @@ const Login = props => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
+/***/ "./src/js/pages/Logout.jsx":
+/*!*********************************!*\
+  !*** ./src/js/pages/Logout.jsx ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Logout = props => {
+  location.reload();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Logging out...");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Logout);
 
 /***/ }),
 
@@ -34989,6 +35321,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_viewClass_Meetings_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/viewClass/Meetings.jsx */ "./src/js/components/viewClass/Meetings.jsx");
 /* harmony import */ var _components_NavBar_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/NavBar.jsx */ "./src/js/components/NavBar.jsx");
+/* harmony import */ var _components_viewClass_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/viewClass/CreateMeeting.jsx */ "./src/js/components/viewClass/CreateMeeting.jsx");
+
 
 
 
@@ -34998,7 +35332,7 @@ const ViewClass = props => {
     style: {
       textAlign: "center"
     }
-  }, "Current Meetings:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_Meetings_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "Current Meetings:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_Meetings_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ViewClass);

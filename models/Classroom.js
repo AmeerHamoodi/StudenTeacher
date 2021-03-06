@@ -19,6 +19,14 @@ const Classes = seq.define("classes", {
     learning_sess: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 }, {
     freezeTableName: true,

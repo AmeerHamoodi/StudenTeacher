@@ -42,7 +42,7 @@ app.get("/logout", (req, res) => {
 })
 
 /*
-app.get(["/home", "classes"], (req, res, next) => {
+app.get(["/home", "/classes"], (req, res, next) => {
     if (typeof req.session.loggedIn !== "undefined") {
         const data = verify(req.session.loggedIn);
 
@@ -54,6 +54,17 @@ app.get(["/home", "classes"], (req, res, next) => {
     }
     next();
 })*/
+
+app.get(["/login", "/signup"], (req, res, next) => {
+    if (typeof req.session.loggedIn !== "undefined") {
+        const data = verify(req.session.loggedIn);
+
+        if (data) {
+            res.status(200).redirect("/home");
+        }
+    }
+    next();
+})
 
 app.get("*", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");

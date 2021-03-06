@@ -26,3 +26,13 @@ body {
 a:hover {
     color: #34eb52;
 }
+
+.greenLink:hover {
+    cursor: pointer;
+    color: #31d64c !important;
+}
+
+.margined {
+    margin-right: 4em;
+    margin-left: 4em;
+}

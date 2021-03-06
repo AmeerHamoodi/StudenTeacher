@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const Classroom = ({id, name}) => {
+const Classroom = ({ide, name, author, description}) => {
     return (
         <>
             <div className="item">
@@ -9,12 +9,12 @@ const Classroom = ({id, name}) => {
                     <img src="./css/imgs/placeholder.png"/>
                 </div>
                 <div className="content" style={{marginTop: "5em"}}>
-                    <Link className="header" to="/viewClass">Header</Link>
+                    <Link className="header" to="/viewClass">{name}</Link>
                     <div className="meta">
-                        <span>Description</span>
+                        <span> Description: {description}</span>
                     </div>
                     <div className="extra">
-                        Additional Details
+                        Owner: {author}
                     </div>
                 </div>
             </div>

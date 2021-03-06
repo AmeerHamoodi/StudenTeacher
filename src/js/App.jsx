@@ -7,6 +7,9 @@ import Signup from "./pages/Signup.jsx";
 import Home from "./pages/Home.jsx";
 import Classes from "./pages/Classes.jsx";
 import ViewClass from "./pages/ViewClass.jsx";
+import CreateMeeting from "./pages/CreateMeeting.jsx";
+import CreateClass from "./pages/CreateClass.jsx";
+import Logout from "./pages/Logout.jsx";
 
 const App = () => {
     return (
@@ -26,6 +29,15 @@ const App = () => {
                 </Route>
                 <Route path="/viewClass">
                     <ViewClass></ViewClass>
+                </Route>
+                <Route path="/createMeeting">
+                    <CreateMeeting></CreateMeeting>
+                </Route>
+                <Route path="/createClass">
+                    <CreateClass></CreateClass>
+                </Route>
+                <Route path="/logout">
+                    <Logout></Logout>
                 </Route>
             </Switch>
         </BrowserRouter>
