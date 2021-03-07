@@ -3,6 +3,7 @@ require("./logs");
 const express = require("express");
 const session = require("express-session");
 const { Sequelize } = require("sequelize");
+const helmet = require("helmet");
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
@@ -16,6 +17,9 @@ module.exports = sequelize;
 
 //app.use(cors);
 app.use(express.json());
+app.use(helmet.xssFilter());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
 app.get("/", (req, res) => {
     res.redirect("/home")
 })
@@ -48,7 +52,7 @@ app.get("/logout", (req, res) => {
 })
 
 
-app.get(["/home", "/classes", "/createClass", "/viewClass", "/createMeeting", "/viewClass/*"], (req, res, next) => {
+app.get(["/home", "/classes", "/createClass", "/viewClass", "/createMeeting", "/viewClass/*", "/stream/*"], (req, res, next) => {
     if (typeof req.session.loggedIn !== "undefined") {
         const data = verify(req.session.loggedIn);
 

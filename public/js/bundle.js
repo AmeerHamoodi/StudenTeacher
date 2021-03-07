@@ -42192,7 +42192,7 @@ const Classroom = ({
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "content",
     style: {
-      marginTop: "5em"
+      marginTop: "3.5em"
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "header",
@@ -42435,6 +42435,7 @@ const CreateMeeting = props => {
   const clickback = () => {
     const link = location.protocol + "//" + location.hostname + ":" + location.port + "/api/class/join_class?id=" + window.location.href.split("viewClass=")[1];
     navigator.clipboard.writeText(link);
+    alert("Copied!");
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -43119,7 +43120,7 @@ const ViewClass = props => {
     style: {
       textAlign: "center"
     }
-  }, classData.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+  }, classData.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     style: {
       textAlign: "center"
     }

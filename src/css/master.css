@@ -74,6 +74,16 @@ video.presentation_call {
     justify-content: center !important;
 }
 
+.item.bg-white {
+    margin: 1em !important;
+    padding-top: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+}
+
+.ui.items.margined {
+    margin-top: 4em !important;
+}
+
 .side_chat {
     position: fixed;
     right: 0;

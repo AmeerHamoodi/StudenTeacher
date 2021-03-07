@@ -54,3 +54,299 @@
 {"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
 {"message":[],"level":"info"}
 {"message":[],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[],"level":"info"}
+{"message":[],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): INSERT INTO `classes` (`id`,`owner`,`users`,`learning_sess`,`title`,`description`) VALUES (DEFAULT,?,?,?,?,?);","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":""},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): INSERT INTO `classes` (`id`,`owner`,`users`,`learning_sess`,`title`,`description`) VALUES (DEFAULT,?,?,?,?,?);","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"pengui178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'pengui178';","level":"info"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = '28';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"server started","level":"info"}
+{"message":"server started","level":"info"}
+{"message":"log","level":"info"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = '28';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"server started","level":"info"}
+{"message":"log","level":"info"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = '28';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1],[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27},{"owner":"penguin178","title":"afasf","description":"asfsafsaf","id":28}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = 28;","level":"info"}
+{"message":"Executing (default): DELETE FROM `classes` WHERE `id` = 28","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"asfsafas","description":"asfasf","id":27}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = 27;","level":"info"}
+{"message":"Executing (default): DELETE FROM `classes` WHERE `id` = 27","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[],"level":"info"}
+{"message":[],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[],"level":"info"}
+{"message":[],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[],"level":"info"}
+{"message":[],"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Connection","level":"info"}
+{"message":{"id":"28","username":"penguin178"},"level":"info"}
+{"message":"server started","level":"info"}
+{"message":"server started","level":"info"}
+{"message":"server started","level":"info"}
+{"message":"server started","level":"info"}
+{"message":"Error: Can't set headers after they are sent.\n    at SendStream.headersAlreadySent (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:390:13)\n    at SendStream.send (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:617:10)\n    at onstat (E:\\Users\\mero\\Documents\\delta-hacks\\node_modules\\send\\index.js:729:10)\n    at FSReqCallback.oncomplete (fs.js:168:5)","level":"error"}
+{"message":{"username":"penguin178","password":"pricey31"},"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`username` = 'penguin178';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[],"level":"info"}
+{"message":[],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): INSERT INTO `classes` (`id`,`owner`,`users`,`learning_sess`,`title`,`description`) VALUES (DEFAULT,?,?,?,?,?);","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"Hello world","description":"This is a new class about hello worlding","id":29}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = '29';","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = '29';","level":"info"}
+{"message":"Executing (default): UPDATE `classes` SET `learning_sess`=? WHERE `id` = ?","level":"info"}
+{"message":"1ddf3d27-cf1c-4d6e-93fa-16f835aae695","level":"info"}
+{"message":"Connection","level":"info"}
+{"message":{"room":"1ddf3d27-cf1c-4d6e-93fa-16f835aae695","id":"29","username":"penguin178"},"level":"info"}
+{"message":{"1ddf3d27-cf1c-4d6e-93fa-16f835aae695":{"users":[],"id":"1ddf3d27-cf1c-4d6e-93fa-16f835aae695","host":"not found"}},"level":"info"}
+{"message":"host: penguin178","level":"info"}
+{"message":"Disconnect","level":"info"}
+{"message":"Rooms: ","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = '29';","level":"info"}
+{"message":"Executing (default): UPDATE `classes` SET `learning_sess`=? WHERE `id` = ?","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[[1]],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":[{"owner":"penguin178","title":"Hello world","description":"This is a new class about hello worlding","id":29}],"level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes` WHERE `classes`.`id` = 29;","level":"info"}
+{"message":"Executing (default): DELETE FROM `classes` WHERE `id` = 29","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `username`, `password` FROM `users` AS `users` WHERE `users`.`id` = 1;","level":"info"}
+{"message":"Executing (default): SELECT `id`, `owner`, `users`, `learning_sess`, `title`, `description` FROM `classes` AS `classes`;","level":"info"}
+{"message":[],"level":"info"}
+{"message":[],"level":"info"}

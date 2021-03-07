@@ -5,6 +5,7 @@ const CreateMeeting = props => {
     const clickback = () => {
         const link = location.protocol + "//" + location.hostname + ":" + location.port + "/api/class/join_class?id=" + window.location.href.split("viewClass=")[1];
         navigator.clipboard.writeText(link);
+        alert("Copied!");
     }
     return (
         <div className="ui grid" style={{paddingBottom: 0}}>
