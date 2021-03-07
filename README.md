@@ -10,7 +10,7 @@ It's my strong belief that education is a right to everyone, this software aims 
 I used Express for my server structure and API, MySQL (+ sequelize as an ORM) as my DB, Socket.io to send messages and communicate information for p2p connections, Peer JS for the actual p2p connections and for authentication I used Express sessions and JWT + passport JS
 
 # Further Development:
-This project was completed over the course of 36 hours by one person so I would expect there are A LOT of improvements that can be made to this, so if you would like to develop this software on your own you can continue doing so by doing the following:
+This project was completed over the course of 36 hours by one person so I would expect there to be A LOT of improvements that can be made to this, so if you would like to develop this software on your own you can do so by doing the following:
 
 ```bash
 $ git clone https://github.com/AmeerHamoodi/public_DH.git
