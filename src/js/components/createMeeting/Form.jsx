@@ -15,6 +15,8 @@ const Form = props => {
 
         if(!res.error) {
             location.href = "/stream?id="+res.message;
+        } else {
+            alert(res.message, "error");
         }
     }
 

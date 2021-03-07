@@ -13,7 +13,7 @@ const Meetings = ({classData}) => {
     temp = temp.length > 0 ? temp : <h3 style={{textAlign: "center"}}>No presentations, check back later, or start your own!</h3> 
 
     return (
-        <div className="ui container bg-white items" style={{marginTop: 0}}>
+        <div className="ui items margined" style={{marginTop: 0}}>
             {temp}
         </div>
     )

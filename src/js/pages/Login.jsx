@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from "react";
 import API from "../api";
 import Form from "../components/Form.jsx";
-import Error from "../components/Error.jsx";
 import {Link} from "react-router-dom";
 
 const Login = props => {
-    const [errorDisplay, setErrorDisplay] = useState("");    
-
-    const callback = async () => {
+     const callback = async () => {
         console.log("click")
         const data = {
             username: $("#form_username").val(),
@@ -17,7 +14,7 @@ const Login = props => {
             const res = await API.login(data);
 
             if(res.error) {
-                alert(res.message);
+                alert(res.message, "error");
             } else {
                 const xhr = new XMLHttpRequest();
                 xhr.open("POST", "/api/auth/ping");
@@ -41,19 +38,19 @@ const Login = props => {
     }
 
     useEffect(() => {
-        $(".close.icon").click(function(){
-            $(this).parent().hide();
-        });
         $(".ui.negative.message").hide();
     })
     
     return (
         <>
-            <div className="ui container bg-white" style={{borderRadius: "7px"}}>
-                <h1 style={{textAlign: "center"}}>Login:</h1>
-                <Form cb={callback}></Form>
-                <Link to="/signup" style={{padding: "10px 10px 10px 10px"}}>Or click here to signup!</Link>
-                <Error message={errorDisplay}></Error>
+            <div className="main_container">
+            </div>
+            <div className="ui container bg-white" style={{width: "400px", height: "500px", alignContent: "center"}}>
+            <h1 style={{textAlign: "center"}}>Login:</h1>
+                <div style={{position: "relative", top: "30%", transform:"translateY(-30%)"}}>
+                    <Form cb={callback}></Form>
+                    <Link to="/signup" style={{padding: "10px 10px 10px 10px"}}>Or click here to signup!</Link>              
+                </div>
             </div>
         </> 
     )

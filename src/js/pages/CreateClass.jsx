@@ -6,8 +6,10 @@ const CreateClass = props => {
     return (
         <>
             <NavBar></NavBar>
-            <h1>Enter class information below:</h1>
-            <Form></Form>
+            <div style={{position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%"}}>
+                <h1>Enter class information below:</h1>
+                <Form></Form>
+            </div>
         </>
     )
 };

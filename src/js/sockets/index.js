@@ -22,7 +22,7 @@ const init = () => {
     const classId = localStorage.getItem("class_id");
     console.log(classId);
     let MEDIA;
-    socket.emit("room", { room: room, id: classId });
+    socket.emit("room", { room: room, id: classId, username: JSON.parse(localStorage.getItem("userData")).username });
 
     navigator.mediaDevices.getUserMedia({
         audio: true,
@@ -129,6 +129,18 @@ const init = () => {
         location.href = "/home";
     });
 
+    const sendMessage = () => {
+        const message = $("#text_chat").val();
+        if (message.replace(/\s/g, '').length > 0) {
+            socket.emit("message_client", message);
+            $("#text_chat").val("")
+        }
+    }
+
+    const renderMessage = data => {
+        $("#chat").append(`<li class='chat_message'><b>${data.username}: </b> ${data.message}</li>`);
+    }
+
     //UI STUFF
     $("#microphone").click(() => {
         MEDIA.getAudioTracks()[0].enabled = !MEDIA.getAudioTracks()[0].enabled;
@@ -147,6 +159,21 @@ const init = () => {
         } else {
             $("i.video").css("opacity", "0.3")
         }
+    });
+    $("#meeting_messages").click(() => {
+        $(".side_chat").toggle();
+    });
+    $(document).on("keypress", (e) => {
+        if (e.which == 13) {
+            sendMessage();
+        }
+    });
+    $("#send_message").click(() => {
+        sendMessage();
+    })
+
+    socket.on("message", (message) => {
+        renderMessage(message);
     })
 
 };

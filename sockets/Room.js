@@ -49,10 +49,21 @@ class Room {
                     userItem.socket.emit("room_connection", sock.peer_id);
                 }
             });
+        });
+
+        sock.on("message_client", (message) => {
+            console.log(message);
+            this.users.forEach(userItem => {
+                userItem.socket.emit("message", { username: user.name, message: escp(message) });
+            });
         })
 
         return this.host.id == user.id;
     }
+}
+
+const escp = s => {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')
 }
 
 module.exports = Room;

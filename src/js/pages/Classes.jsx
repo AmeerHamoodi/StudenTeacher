@@ -17,7 +17,7 @@ const ClassPage = props => {
                 setClasses(<h1 style={{textAlign: "center", marginTop: "3em"}}>No classes available currently</h1>);
             }
         } else {
-            alert(data.message);
+            alert(data.message, "error");
             setClasses(<h1 style={{textAlign: "center", marginTop: "3em"}}>No classes available currently</h1>);
         }
         
@@ -27,7 +27,8 @@ const ClassPage = props => {
         <>
             <NavBar active="classes"></NavBar>
             <h1 style={{textAlign: "center",  marginBottom: 0}}>My classes:</h1>
-            {classes}            
+            {classes}  
+            <div style={{marginBottom: "2em", height: "20px"}}></div>          
         </>
     )
 };

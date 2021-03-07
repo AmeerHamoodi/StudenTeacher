@@ -17,7 +17,7 @@ const Classroom = ({ide, name, author, description}) => {
                 alert(response.message);
                 location.reload();
             } else {
-                alert(response.message);
+                alert(response.message, "error");
             }
         }
     }

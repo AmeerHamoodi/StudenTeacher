@@ -19,7 +19,7 @@ const Home = props => {
                 setClasses(<MyClasses classes={data.message}></MyClasses>);
             }
         } else {
-            alert(data.message);
+            alert(data.message, "error");
             setClasses(<h1 style={{textAlign: "center", marginTop: "3em"}}>No classes available currently</h1>);
         }
         

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const MeetingOuter = ({id, title, description, owner}) => {
     return (
-        <div className="item">
+        <div className="item bg-white">
             <div className="image">
                 <img src="./css/imgs/video_placeholder.png"/>
             </div>

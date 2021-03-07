@@ -20,7 +20,7 @@ const ViewClass = props => {
             console.log(JSON.parse(response.message.learning_sess))
             setReactState([<Meetings classData={JSON.parse(response.message.learning_sess)}></Meetings>])
         } else {
-            alert(response.message);
+            alert(response.message, "error");
         }
     }, []);
 

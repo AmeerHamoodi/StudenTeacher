@@ -12,7 +12,7 @@ const Form = props => {
             alert(response.message);
             location.href = "/home";
         } else {
-            alert("ERROR :" + response.message);
+            alert(response.message, "error");
         }
     }
     return (

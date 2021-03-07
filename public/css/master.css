@@ -19,8 +19,8 @@ body {
 }
 
 .ui.container.bg-white {
-    border: 2px solid #ebebeb;
     min-height: 30%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 a:hover {
@@ -82,4 +82,54 @@ video.presentation_call {
     width: 400px;
     background-color: black;
     opacity: 0.9;
+}
+
+#down {
+    position: absolute;
+    bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#text_chat {
+    width: 100%;
+    height: 30px;
+}
+
+#chat {
+    list-style-type: none;
+}
+
+li.chat_message {
+    color: white;
+}
+
+.main_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./imgs/login_background.jpg");
+    background-size: cover;
+}
+
+.main_container_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #34eb52;
+    opacity: 0.15;
+}
+
+.top_fix {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 400px;
+    margin: 0 !important;
+    margin-top: 1em !important;
 }

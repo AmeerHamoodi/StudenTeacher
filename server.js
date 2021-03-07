@@ -1,4 +1,5 @@
 require("dotenv").config();
+require("./logs");
 const express = require("express");
 const session = require("express-session");
 const { Sequelize } = require("sequelize");
@@ -90,32 +91,42 @@ app.use("/stream_backend", peerServer);
 const User = require("./sockets/User");
 const users = {};
 
-io.of("/stream").on("connection", socket => {
-    console.log("Connection");
-    socket.id = uuidv4();
 
-    users[socket.id] = new User(socket);
+try {
+    io.of("/stream").on("connection", socket => {
+        console.log("Connection");
+        socket.id = uuidv4();
 
-    socket.on("room", (data) => {
-        console.log(data.room);
-        if (typeof data.room !== "undefined") {
-            const roomFromId = RoomManager.getRoom(data.room, data.id);
-            if (roomFromId.addUser(users[socket.id])) {
-                socket.on("disconnect", () => {
-                    RoomManager.removeRoom(roomFromId.id);
-                    console.log("Rooms: ", RoomManager.rooms);
-                    deleteRoom(data.room, data.id);
-                })
+        users[socket.id] = new User(socket);
+
+        socket.on("room", (data) => {
+            console.log(data);
+            users[socket.id].name = data.username;
+            if (typeof data.room !== "undefined") {
+                const roomFromId = RoomManager.getRoom(data.room, data.id);
+                if (roomFromId.addUser(users[socket.id])) {
+                    console.log("host: " + data.username);
+                    socket.on("disconnect", () => {
+                        RoomManager.removeRoom(roomFromId.id);
+                        console.log("Rooms: ", RoomManager.rooms);
+                        deleteRoom(data.room, data.id);
+                    })
+                }
             }
-        }
-    })
+        })
 
 
-    socket.on("disconnect", () => {
-        delete users[socket.id];
-    })
+        socket.on("disconnect", () => {
+            delete users[socket.id];
+        })
 
-});
+    });
+} catch (e) {
+
+}
+
+
+
 
 app.get("*", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
