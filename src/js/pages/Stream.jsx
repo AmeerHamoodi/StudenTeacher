@@ -1,5 +1,7 @@
 import React, {useEffect} from "react";
 import init from "../sockets/index";
+import ControlButtons from "../components/stream/ControlButtons.jsx";
+import Chat from "../components/stream/Chat.jsx";
 
 
 const Stream = props => {
@@ -8,8 +10,13 @@ const Stream = props => {
     }, []);
 
     return (
-        <div className="calls" id="calls">
-        </div>
+        <>
+            <Chat></Chat>
+            <ControlButtons></ControlButtons>
+            <div className="calls" id="calls">
+            </div>
+        </>
+        
     )
 };
 

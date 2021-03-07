@@ -1,8 +1,4 @@
 const io = require("socket.io-client");
-const socket = io({
-    rejectUnauthorized: false,
-    transports: ["polling"]
-});
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function() {
@@ -13,15 +9,26 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 const streams = {};
 
 const init = () => {
+    const socket = io("/stream", {
+        rejectUnauthorized: false,
+        transports: ["polling"]
+    });
     const me = new Peer();
     const peers = {};
     const callList = {};
 
 
+    const room = location.href.split("?id=")[1];
+    const classId = localStorage.getItem("class_id");
+    console.log(classId);
+    let MEDIA;
+    socket.emit("room", { room: room, id: classId });
+
     navigator.mediaDevices.getUserMedia({
         audio: true,
         video: true
     }).then(stream => {
+        MEDIA = stream;
         console.log(stream);
         client.addVidToVids(stream, "self")
 
@@ -62,7 +69,8 @@ const init = () => {
     })
 
     socket.on("disconnect_peer", pid => {
-        console.log("close")
+        console.log("close");
+        document.getElementById(pid).remove();
         if (peers[pid]) peers[pid].close();
 
     })
@@ -114,6 +122,31 @@ const init = () => {
         peers[id] = me;
         console.log("OPEN" + id)
         socket.emit("peer_open", id);
+    });
+
+    socket.on("close", () => {
+        alert("Presentation closed");
+        location.href = "/home";
+    });
+
+    //UI STUFF
+    $("#microphone").click(() => {
+        MEDIA.getAudioTracks()[0].enabled = !MEDIA.getAudioTracks()[0].enabled;
+        const en = MEDIA.getAudioTracks()[0].enabled;
+        if (en) {
+            $("i.microphone").attr("class", "big microphone icon").css("opacity", "1");
+        } else {
+            $("i.microphone").attr("class", "big microphone slash icon").css("opacity", "0.3");
+        }
+    });
+    $("#video").click(() => {
+        MEDIA.getVideoTracks()[0].enabled = !MEDIA.getVideoTracks()[0].enabled;
+        const en = MEDIA.getVideoTracks()[0].enabled;
+        if (en) {
+            $("i.video").css("opacity", "1")
+        } else {
+            $("i.video").css("opacity", "0.3")
+        }
     })
 
 };

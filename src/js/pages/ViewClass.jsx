@@ -10,6 +10,8 @@ const ViewClass = props => {
     const [reactState, setReactState] = useState([]);
     const id = props.match.params.classId;
 
+    localStorage.setItem("class_id", id);
+
     useEffect(async () => {
         const response = await API.getClassById({id: id});
 

@@ -42324,6 +42324,98 @@ const MyClasses = ({
 
 /***/ }),
 
+/***/ "./src/js/components/stream/Chat.jsx":
+/*!*******************************************!*\
+  !*** ./src/js/components/stream/Chat.jsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Chat = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "side_chat"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    id: "chat"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Enter chat message and hit enter",
+    id: "text_chat"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Chat);
+
+/***/ }),
+
+/***/ "./src/js/components/stream/ControlButtons.jsx":
+/*!*****************************************************!*\
+  !*** ./src/js/components/stream/ControlButtons.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const ControlButtons = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "meeting bar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui eight column grid grid-items"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "column",
+    id: "microphone",
+    enabled: "true",
+    style: {
+      color: "white"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "big microphone icon"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "column",
+    id: "video",
+    style: {
+      color: "white"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "big video icon"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "column"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "column"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "column"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "column",
+    id: "meeting_messages",
+    style: {
+      color: "white"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "big comments icon"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "column"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui button red",
+    onClick: () => {
+      location.href = "/home";
+    }
+  }, "Leave Meeting"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ControlButtons);
+
+/***/ }),
+
 /***/ "./src/js/components/viewClass/CreateMeeting.jsx":
 /*!*******************************************************!*\
   !*** ./src/js/components/viewClass/CreateMeeting.jsx ***!
@@ -42399,6 +42491,8 @@ const CreateMeeting = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 const MeetingOuter = ({
@@ -42418,8 +42512,9 @@ const MeetingOuter = ({
     style: {
       marginTop: "5em"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "header",
+    to: `/stream?id=${id}`
   }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "meta"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Description: ", description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -42455,6 +42550,7 @@ const Meetings = ({
     classData.forEach((item, i) => {
       temp.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MeetingOuter_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
         title: item.title,
+        id: item.id,
         description: item.description,
         owner: item.owner,
         key: `meeting_${i}`
@@ -42882,6 +42978,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _sockets_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sockets/index */ "./src/js/sockets/index.js");
+/* harmony import */ var _components_stream_ControlButtons_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/stream/ControlButtons.jsx */ "./src/js/components/stream/ControlButtons.jsx");
+/* harmony import */ var _components_stream_Chat_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/stream/Chat.jsx */ "./src/js/components/stream/Chat.jsx");
+
+
 
 
 
@@ -42889,10 +42989,10 @@ const Stream = props => {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     Object(_sockets_index__WEBPACK_IMPORTED_MODULE_1__["default"])();
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_stream_Chat_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_stream_ControlButtons_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "calls",
     id: "calls"
-  });
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Stream);
@@ -42924,6 +43024,7 @@ const ViewClass = props => {
   const [classData, setClassData] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   const [reactState, setReactState] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   const id = props.match.params.classId;
+  localStorage.setItem("class_id", id);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(async () => {
     const response = await _api_index__WEBPACK_IMPORTED_MODULE_4__["default"].getClassById({
       id: id
@@ -42970,10 +43071,6 @@ const ViewClass = props => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/build/index.js");
-const socket = io({
-    rejectUnauthorized: false,
-    transports: ["polling"]
-});
 
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function() {
@@ -42984,15 +43081,26 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 const streams = {};
 
 const init = () => {
+    const socket = io("/stream", {
+        rejectUnauthorized: false,
+        transports: ["polling"]
+    });
     const me = new Peer();
     const peers = {};
     const callList = {};
 
 
+    const room = location.href.split("?id=")[1];
+    const classId = localStorage.getItem("class_id");
+    console.log(classId);
+    let MEDIA;
+    socket.emit("room", { room: room, id: classId });
+
     navigator.mediaDevices.getUserMedia({
         audio: true,
         video: true
     }).then(stream => {
+        MEDIA = stream;
         console.log(stream);
         client.addVidToVids(stream, "self")
 
@@ -43033,7 +43141,8 @@ const init = () => {
     })
 
     socket.on("disconnect_peer", pid => {
-        console.log("close")
+        console.log("close");
+        document.getElementById(pid).remove();
         if (peers[pid]) peers[pid].close();
 
     })
@@ -43085,6 +43194,31 @@ const init = () => {
         peers[id] = me;
         console.log("OPEN" + id)
         socket.emit("peer_open", id);
+    });
+
+    socket.on("close", () => {
+        alert("Presentation closed");
+        location.href = "/home";
+    });
+
+    //UI STUFF
+    $("#microphone").click(() => {
+        MEDIA.getAudioTracks()[0].enabled = !MEDIA.getAudioTracks()[0].enabled;
+        const en = MEDIA.getAudioTracks()[0].enabled;
+        if (en) {
+            $("i.microphone").attr("class", "big microphone icon").css("opacity", "1");
+        } else {
+            $("i.microphone").attr("class", "big microphone slash icon").css("opacity", "0.3");
+        }
+    });
+    $("#video").click(() => {
+        MEDIA.getVideoTracks()[0].enabled = !MEDIA.getVideoTracks()[0].enabled;
+        const en = MEDIA.getVideoTracks()[0].enabled;
+        if (en) {
+            $("i.video").css("opacity", "1")
+        } else {
+            $("i.video").css("opacity", "0.3")
+        }
     })
 
 };

@@ -1,10 +1,16 @@
+const RoomManager = require("./RoomManager");
+
 class Room {
-    constructor(id, host) {
+    constructor(id, classId) {
         this.users = [];
         this.id = id;
-        this.host = host;
+        this.host = "not found";
+        this.classId = classId;
     }
     addUser(user) {
+        if (this.host == "not found") {
+            this.host = user;
+        }
         this.users.push(user);
         user.socket.join(this.id);
         const sock = user.socket;
@@ -17,14 +23,22 @@ class Room {
 
 
         sock.on("disconnect", () => {
-            console.log("Disconnect", sock.peer_id)
+            console.log("Disconnect", sock.peer_id);
 
-            this.users.forEach(userItem => {
-                if (userItem.socket.id !== sock.id) {
-                    userItem.socket.emit("disconnect_peer", sock.peer_id);
-                }
-            });
-            this.users.splice(this.users.indexOf(this.users.find(obj => obj.id == sock.id)), 1);
+            if (sock.id == this.host.id) {
+                this.users.forEach(userItem => {
+                    if (userItem.socket.id !== sock.id) {
+                        userItem.socket.emit("close");
+                    }
+                });
+            } else {
+                this.users.forEach(userItem => {
+                    if (userItem.socket.id !== sock.id) {
+                        userItem.socket.emit("disconnect_peer", sock.peer_id);
+                    }
+                });
+                this.users.splice(this.users.indexOf(this.users.find(obj => obj.id == sock.id)), 1);
+            }
         });
 
         sock.on("peer_open", (id) => {
@@ -36,6 +50,8 @@ class Room {
                 }
             });
         })
+
+        return this.host.id == user.id;
     }
 }
 

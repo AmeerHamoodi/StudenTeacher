@@ -1,4 +1,5 @@
 import  React from "react";
+import {Link} from "react-router-dom";
 
 const MeetingOuter = ({id, title, description, owner}) => {
     return (
@@ -7,7 +8,7 @@ const MeetingOuter = ({id, title, description, owner}) => {
                 <img src="./css/imgs/video_placeholder.png"/>
             </div>
             <div className="content" style={{marginTop: "5em"}}>
-                <a className="header">{title}</a>
+                <Link className="header" to={`/stream?id=${id}`}>{title}</Link>
                 <div className="meta">
                     <span>Description: {description}</span>
                 </div>

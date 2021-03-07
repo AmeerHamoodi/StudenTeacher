@@ -6,7 +6,7 @@ const Meetings = ({classData}) => {
 
     if(Array.isArray(classData)) {
         classData.forEach((item, i) => {
-            temp.push(<MeetingOuter title={item.title} description={item.description} owner={item.owner} key={`meeting_${i}`}></MeetingOuter>)
+            temp.push(<MeetingOuter title={item.title} id={item.id} description={item.description} owner={item.owner} key={`meeting_${i}`}></MeetingOuter>)
         })
     }
 

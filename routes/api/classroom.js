@@ -4,6 +4,8 @@ const Classroom = require("../../models/Classroom");
 const User = require("../../models/User");
 const { v4: uuidv4 } = require('uuid');
 
+const RoomManager = require("../../sockets/RoomManager");
+
 const Joi = require("joi");
 
 const Schema = Joi.object({
@@ -184,10 +186,13 @@ router.post("/class/create_meeting", async(req, res) => {
                 const data = { title: req.body.title, description: req.body.description };
                 const { value, error } = await Schema.validate(data);
                 if (!error) {
+                    const tempId = uuidv4();
+                    const userPerson = await User.findOne({ where: { id: verified.id } });
                     const query = {
                         title: value.title,
                         description: value.description,
-                        id: uuidv4()
+                        id: tempId,
+                        owner: userPerson.username
                     };
                     const tableData = await Classroom.findOne({ where: { id: req.body.id } });
 
@@ -195,8 +200,9 @@ router.post("/class/create_meeting", async(req, res) => {
                     sess.push(query);
 
                     tableData.learning_sess = JSON.stringify(sess);
-
                     await tableData.save();
+
+                    RoomManager.newRoom(tempId);
 
                     res.status(200).send({ message: query.id, error: false });
                 } else {

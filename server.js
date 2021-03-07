@@ -82,7 +82,7 @@ const peerServer = ExpressPeerServer(server, {
     debug: true
 })
 const RoomManager = require("./sockets/RoomManager");
-const Room = require("./sockets/Room");
+const deleteRoom = require("./helpers/roomDB");
 
 app.use("/stream_backend", peerServer);
 
@@ -90,13 +90,30 @@ app.use("/stream_backend", peerServer);
 const User = require("./sockets/User");
 const users = {};
 
-io.on("connection", socket => {
+io.of("/stream").on("connection", socket => {
     console.log("Connection");
     socket.id = uuidv4();
 
     users[socket.id] = new User(socket);
 
-    const room = socket.handshake.query.id;
+    socket.on("room", (data) => {
+        console.log(data.room);
+        if (typeof data.room !== "undefined") {
+            const roomFromId = RoomManager.getRoom(data.room, data.id);
+            if (roomFromId.addUser(users[socket.id])) {
+                socket.on("disconnect", () => {
+                    RoomManager.removeRoom(roomFromId.id);
+                    console.log("Rooms: ", RoomManager.rooms);
+                    deleteRoom(data.room, data.id);
+                })
+            }
+        }
+    })
+
+
+    socket.on("disconnect", () => {
+        delete users[socket.id];
+    })
 
 });
 
