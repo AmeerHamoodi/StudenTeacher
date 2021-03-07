@@ -41725,7 +41725,7 @@ const App = () => {
 /*!*********************************!*\
   !*** ./src/js/api/classroom.js ***!
   \*********************************/
-/*! exports provided: getClassrooms, createClassroom, getClassById, removeClassById */
+/*! exports provided: getClassrooms, createClassroom, getClassById, removeClassById, createMeeting */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41734,6 +41734,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createClassroom", function() { return createClassroom; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClassById", function() { return getClassById; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeClassById", function() { return removeClassById; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createMeeting", function() { return createMeeting; });
 const getClassrooms = () => {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
@@ -41792,6 +41793,21 @@ const removeClassById = (data) => {
 
         xhr.send(JSON.stringify(data));
     })
+};
+
+const createMeeting = data => {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/class/create_meeting")
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.response));
+            console.log(JSON.parse(xhr.response))
+        }
+
+        xhr.send(JSON.stringify(data));
+    })
 }
 
 
@@ -41820,7 +41836,8 @@ __webpack_require__.r(__webpack_exports__);
     getClassrooms: _classroom__WEBPACK_IMPORTED_MODULE_2__["getClassrooms"],
     createClassroom: _classroom__WEBPACK_IMPORTED_MODULE_2__["createClassroom"],
     getClassById: _classroom__WEBPACK_IMPORTED_MODULE_2__["getClassById"],
-    removeClassById: _classroom__WEBPACK_IMPORTED_MODULE_2__["removeClassById"]
+    removeClassById: _classroom__WEBPACK_IMPORTED_MODULE_2__["removeClassById"],
+    createMeeting: _classroom__WEBPACK_IMPORTED_MODULE_2__["createMeeting"]
 });
 
 /***/ }),
@@ -42105,9 +42122,25 @@ const Form = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/ */ "./src/js/api/index.js");
+
 
 
 const Form = props => {
+  const click = async () => {
+    const id = location.href.split("?id=")[1];
+    const data = {
+      id: id,
+      description: $("#form_desc").val(),
+      title: $("#form_title").val()
+    };
+    const res = await _api___WEBPACK_IMPORTED_MODULE_1__["default"].createMeeting(data);
+
+    if (!res.error) {
+      location.href = "/stream?id=" + res.message;
+    }
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "ui form margined"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -42123,7 +42156,8 @@ const Form = props => {
     id: "form_desc"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "ui positive button",
-    type: "button"
+    type: "button",
+    onClick: click
   }, "Submit"));
 };
 
@@ -42338,7 +42372,7 @@ const CreateMeeting = props => {
       fontSize: "1.2em"
     },
     className: "greenLink",
-    to: "/createMeeting"
+    to: `/createMeeting?id=${props.ide}`
   }, "Click here to create a meeting ", "->"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       color: "#31d64c",
@@ -42917,7 +42951,9 @@ const ViewClass = props => {
     style: {
       textAlign: "center"
     }
-  }, "Current Meetings:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), reactState);
+  }, "Current Meetings:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_viewClass_CreateMeeting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    ide: id
+  }), reactState);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ViewClass);

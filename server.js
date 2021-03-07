@@ -3,7 +3,6 @@ const express = require("express");
 const session = require("express-session");
 const { Sequelize } = require("sequelize");
 const { v4: uuidv4 } = require('uuid');
-const cors = require("cors");
 
 const app = express();
 const server = require("http").createServer(app);
@@ -82,11 +81,11 @@ const { ExpressPeerServer } = require("peer");
 const peerServer = ExpressPeerServer(server, {
     debug: true
 })
+const RoomManager = require("./sockets/RoomManager");
+const Room = require("./sockets/Room");
 
 app.use("/stream_backend", peerServer);
-app.get("*", (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
-});
+
 
 const User = require("./sockets/User");
 const users = {};
@@ -96,16 +95,11 @@ io.on("connection", socket => {
     socket.id = uuidv4();
 
     users[socket.id] = new User(socket);
-    socket.broadcast.emit("new_user", socket.id);
 
-    socket.on("disconnect", () => {
-        console.log("Disconnect", users[socket.id].peer_id)
-        socket.broadcast.emit("disconnect_peer", users[socket.id].peer_id)
-        delete users[socket.id];
-    });
+    const room = socket.handshake.query.id;
 
-    socket.on("peer_open", (id) => {
-        users[socket.id].peer_id = id;
-        socket.broadcast.emit("room_connection", id);
-    })
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
 });

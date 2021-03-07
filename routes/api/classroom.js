@@ -2,6 +2,7 @@ const verifySession = require("../../auth/verifySession");
 const router = require("express").Router();
 const Classroom = require("../../models/Classroom");
 const User = require("../../models/User");
+const { v4: uuidv4 } = require('uuid');
 
 const Joi = require("joi");
 
@@ -161,6 +162,45 @@ router.post("/class/remove_class", async(req, res) => {
                     await queryRes.destroy();
 
                     res.status(200).send({ message: "Success!", error: false })
+                }
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({ message: "ERROR", error: true });
+    }
+});
+
+
+router.post("/class/create_meeting", async(req, res) => {
+    try {
+        if (!req.session.loggedIn) {
+            res.status(403).send({ message: "Not authorized", error: true });
+        } else {
+            const verified = await verifySession(req.session.loggedIn);
+            if (!verified) {
+                res.status(403).send({ message: "Not authorized", error: true });
+            } else {
+                const data = { title: req.body.title, description: req.body.description };
+                const { value, error } = await Schema.validate(data);
+                if (!error) {
+                    const query = {
+                        title: value.title,
+                        description: value.description,
+                        id: uuidv4()
+                    };
+                    const tableData = await Classroom.findOne({ where: { id: req.body.id } });
+
+                    let sess = JSON.parse(tableData.learning_sess);
+                    sess.push(query);
+
+                    tableData.learning_sess = JSON.stringify(sess);
+
+                    await tableData.save();
+
+                    res.status(200).send({ message: query.id, error: false });
+                } else {
+                    res.status(500).send({ message: error.details[0].message, error: true });
                 }
             }
         }

@@ -28,7 +28,7 @@ const ViewClass = props => {
             <h1 style={{textAlign: "center"}}>{classData.title}</h1>
             <h4 style={{textAlign: "center"}}>Owner: {classData.owner}</h4>
             <h2 style={{textAlign: "center"}}>Current Meetings:</h2>
-            <CreateMeeting></CreateMeeting>
+            <CreateMeeting ide={id}></CreateMeeting>
             {reactState}
         </>
     )

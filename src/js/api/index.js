@@ -1,6 +1,6 @@
 import login from "./login";
 import signup from "./signup";
-import { getClassrooms, createClassroom, getClassById, removeClassById } from "./classroom";
+import { getClassrooms, createClassroom, getClassById, removeClassById, createMeeting } from "./classroom";
 
 export default {
     login: login,
@@ -8,5 +8,6 @@ export default {
     getClassrooms: getClassrooms,
     createClassroom: createClassroom,
     getClassById: getClassById,
-    removeClassById: removeClassById
+    removeClassById: removeClassById,
+    createMeeting: createMeeting
 }

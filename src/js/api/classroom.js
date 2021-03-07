@@ -56,6 +56,21 @@ const removeClassById = (data) => {
 
         xhr.send(JSON.stringify(data));
     })
+};
+
+const createMeeting = data => {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/class/create_meeting")
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.response));
+            console.log(JSON.parse(xhr.response))
+        }
+
+        xhr.send(JSON.stringify(data));
+    })
 }
 
-export { getClassrooms, createClassroom, getClassById, removeClassById };
+export { getClassrooms, createClassroom, getClassById, removeClassById, createMeeting };
