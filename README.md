@@ -1,5 +1,5 @@
 # StudenTeacher
-*"Tell me and I will forget. Teach me and I remember. Ivolve me and I learn"* - Benjamin Franklin
+*"Tell me and I will forget. Teach me and I remember. Involve me and I learn"* - Benjamin Franklin
 
 StudenTeacher is a web application built to give students the ability to be involved in their learning, **even during a pandemic**. Using WebRTC technology, students are able to join small meeting groups to teach each other concepts that they learned in class. The application was designed and developed to be easy to use and accesible to all users regardless of technical knowledge or technology available to them. As long as the user has an internet connection, they can use this application to get involved in their learning. 
 
