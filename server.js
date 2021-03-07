@@ -76,7 +76,7 @@ app.get(["/login", "/signup"], (req, res, next) => {
     next();
 })
 
-server.listen(2000);
+server.listen(process.env.PORT || 2000);
 console.log("server started")
 
 //SOCKET TIME 
